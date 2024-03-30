@@ -1,10 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import User
  
-class Item(models.Model):
-    category = models.CharField(max_length=255)
-    subcategory = models.CharField(max_length=255)
+class Book(models.Model):
     name = models.CharField(max_length=255)
-    amount = models.PositiveIntegerField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE,)
+    description = models.TextField()
  
     def __str__(self) -> str:
         return self.name
